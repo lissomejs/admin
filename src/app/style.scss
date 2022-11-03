@@ -1,0 +1,60 @@
+@import '../style/var.scss';
+
+$box-shadow-color: rgba(0, 21, 41, 0.08);
+
+.l-app {
+    background: var(--el-color-white);
+    height: 100%;
+    &__header {
+        box-shadow: 0 2px 8px $box-shadow-color;
+        height: $header_height;
+        position: relative;
+        z-index: 9;
+    }
+
+    &__logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: $header_height;
+        border-bottom: 1px solid #f8f8f9;
+        h1{
+            padding: 0;
+            margin: 0;
+            color: var(--el-color-primary);
+            font-size: var(--el-font-size-extra-large);
+            text-align: center;
+        }
+        &-pic{
+            height: 32px;
+            margin-right: 10px;
+        }
+    }
+
+    &__aside {
+        width: 260px;
+        box-shadow: 2px 0 8px 0 $box-shadow-color;
+        position: relative;
+        z-index: 9;
+    }
+
+    &__menu {
+        width: 100%;
+        .el-menu{
+            border: none;
+        }
+    }
+
+    &__main {
+        background: #f5f7f9;
+        > * {
+            background: #fff;
+            border-radius: 4px;
+            padding: $space;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+    }
+
+}

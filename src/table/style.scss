@@ -1,0 +1,12 @@
+.l-table{
+    &__main{
+        th.el-table__cell {
+            color: var(--el-text-color-primary);
+            background-color: var(--el-table-row-hover-bg-color);
+        }
+    }
+    &__pagination{
+        margin-top: 10px;
+        text-align: right;
+    }
+}

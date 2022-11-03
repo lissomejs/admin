@@ -1,0 +1,9 @@
+$color-label: #909399;
+
+.l-panel-cell{
+    padding: 6px 0;
+    display: inline-block;
+    &__label{
+        color: $color-label;
+    }
+}

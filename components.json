@@ -1,0 +1,74 @@
+[{
+    "type": "base",
+    "title": "基础组件",
+    "components": [
+        {
+            "component": "App",
+            "title": "应用框架"
+        },
+        {
+            "component": "Layout",
+            "title": "布局"
+        },
+        {
+            "component": "Form",
+            "title": "表单"
+        },
+        {
+            "component": "Button",
+            "title": "按钮"
+        },
+        {
+            "component": "ButtonGroup",
+            "title": "按钮组"
+        },
+        {
+            "component": "CheckboxGroup",
+            "title": "复选框"
+        },
+        {
+            "component": "RadioGroup",
+            "title": "单选框"
+        },
+        {
+            "component": "Select",
+            "title": "下拉选择"
+        },
+        {
+            "component": "CodeEditor",
+            "title": "代码编辑"
+        },
+        {
+            "component": "Table",
+            "title": "表格"
+        },
+        {
+            "component": "Dialog",
+            "title": "弹窗"
+        },
+        {
+            "component": "Iframe",
+            "title": "iframe"
+        },
+        {
+            "component": "Panel",
+            "title": "详情面板"
+        },
+        {
+            "component": "Stack",
+            "title": "堆叠组件"
+        },
+        {
+            "component": "Tabs",
+            "title": "标签页"
+        }
+    ]
+}, {
+    "type": "blocks",
+    "title": "复合组件",
+    "components": [
+        {
+            "component": "List",
+            "title": "列表"
+        }]
+}]

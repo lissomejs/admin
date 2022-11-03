@@ -1,0 +1,28 @@
+$item-margin: 20px;
+
+.l-stack{
+    height: 100%;
+    display: flex;
+    &--vertical{
+        flex-direction: column;
+        > *{
+            margin-top: $item-margin;
+
+        }
+        > :first-child{
+            margin-top: 0;
+        }
+        > :last-child{
+            flex: 1;
+        }
+    }
+    &--horizontal{
+        flex-direction: row;
+        > *{
+            margin-left: $item-margin;
+        }
+        > :first-child{
+            margin-left: 0;
+        }
+    }
+}

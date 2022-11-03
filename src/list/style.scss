@@ -1,0 +1,9 @@
+@import '../style/var.scss';
+
+.l-list {
+
+    height: 100%;
+    &__search{
+        margin-bottom: $space;
+    }
+}

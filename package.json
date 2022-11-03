@@ -1,0 +1,74 @@
+{
+    "name": "@lissome/admin",
+    "version": "0.0.5",
+    "description": "Admin components base on Element Plus",
+    "engines": {
+        "node": ">=12.2.0"
+    },
+    "scripts": {
+        "plop": "plop component --",
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint ./src --ext .vue,.js,.ts",
+        "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts",
+        "serve": "vite preview",
+        "release": "pnpm build && npm publish"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^12.0.1",
+        "@commitlint/config-conventional": "^12.0.1",
+        "@types/node": "^18.8.0",
+        "@types/prismjs": "^1.16.5",
+        "@typescript-eslint/eslint-plugin": "^4.15.2",
+        "@typescript-eslint/parser": "^4.15.2",
+        "@vitejs/plugin-vue": "^2.0.1",
+        "@vitejs/plugin-vue-jsx": "^1.3.2",
+        "@vue/compiler-sfc": "^3.2.40",
+        "axios": "^0.27.2",
+        "clipboard-copy": "^4.0.1",
+        "eslint": "^7.21.0",
+        "eslint-plugin-vue": "^7.6.0",
+        "fs-extra": "^9.1.0",
+        "generate-source-map": "^0.0.5",
+        "highlight.js": "^10.6.0",
+        "husky": "^1.3.1",
+        "markdown-it": "^12.0.4",
+        "markdown-it-container": "^3.0.0",
+        "normalize.css": "^8.0.1",
+        "plop": "^2.7.4",
+        "sass": "^1.32.8",
+        "typescript": "^4.7.3",
+        "vite": "^2.7.3",
+        "vite-plugin-dts": "^1.6.4",
+        "vite-plugin-md": "^0.6.0",
+        "vue": "^3.2.40",
+        "vue-router": "4.0.11"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "peerDependencies": {
+        "vue": "^3.2.40"
+    },
+    "dependencies": {
+        "@lissome/util": "^1.0.4",
+        "element-plus": "^2.2.17",
+        "prismjs": "^1.23.0",
+        "vue-prism-editor": "^2.0.0-alpha.2"
+    },
+    "main": "lib/admin.umd.js",
+    "module": "lib/admin.es.js",
+    "jsnext:main": "lib/admin.es.js",
+    "license": "MIT",
+    "types": "lib/types/index.d.ts",
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
+    "packageManager": "pnpm@7.3.0"
+}
