@@ -1,6 +1,9 @@
-import { defineComponent,PropType, SetupContext } from 'vue'
-import { ButtonType, ButtonNativeType } from 'element-plus'
+import { Component, defineComponent,PropType, SetupContext } from 'vue'
+import { type ButtonType, type ButtonNativeType, ElLink, ElButton, ElPopconfirm } from 'element-plus'
 import { createNamespace, getComponent } from '../util'
+import { pascalCase } from '@lissome/util'
+import * as ElementPlusIcons from '@element-plus/icons-vue'
+import { Data } from '../../types'
 
 export type ButtonProps = {
     type?: ButtonType
@@ -31,6 +34,10 @@ export default defineComponent({
             type: String,
             default: '',
         },
+        icon: {
+            type: String,
+            default: '',
+        },
         confirmable: {
             type: Boolean,
             default: false,
@@ -50,20 +57,29 @@ export default defineComponent({
     setup: (props, { emit }: SetupContext) => {
         const handleClick = () => emit('click')
         const handleConfirm = () => emit('confirm')
+        const getIcon = (icon: string) => {
+            const component = (ElementPlusIcons as Data<Component>)[pascalCase(icon)]
+            console.log('getIcon', icon, component)
+
+            return component
+
+        }
 
         return {
             handleClick,
             handleConfirm,
+            getIcon,
         }
     },
     render(){
-        const Button = getComponent('Button')
-        const Link = getComponent('Link')
-        const Popconfirm = getComponent('Popconfirm')
-        const { $slots: slots, handleClick, handleConfirm, href, type, nativeType, confirmable, confirmTitle, confirmButtonText, cancelButtonText } = this
+        const Button = getComponent<typeof ElButton>('Button')
+        const Link = getComponent<typeof ElLink>('Link')
+        const Popconfirm = getComponent<typeof ElPopconfirm>('Popconfirm')
+        const { $slots: slots, handleClick, handleConfirm, getIcon, href, type, nativeType, confirmable, confirmTitle, confirmButtonText, cancelButtonText, icon } = this
         const buttonProps = {
             type,
             nativeType,
+            icon: icon ? getIcon(icon) : undefined,
         }
         const onClick = href ? undefined : handleClick  // 只有button形态才出发click
         let Component = (<Button {...buttonProps} onClick={onClick} v-slots={slots}></Button>)

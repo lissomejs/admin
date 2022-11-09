@@ -1,5 +1,5 @@
 import { App } from 'vue'
-export type Data = Record<string, any>
+export type Data<T = any> = Record<string, T>
 
 // Group类组件通用类型
 interface ItemCommonProps {

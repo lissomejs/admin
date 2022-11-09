@@ -2,7 +2,10 @@
     .el-select{
         width: 100%;
     }
-    &__slots-box {
-        margin-bottom: 20px;
+    &__footer {
+        display: flex;
+    }
+    &__slots{
+        flex: 1;
     }
 }

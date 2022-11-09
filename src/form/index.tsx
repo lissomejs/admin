@@ -163,17 +163,15 @@ export default defineComponent({
         const style = { textAlign: actionDirection }
         const FormButtonsComponent = (<ButtonGroup type={ButtonGroupType.Actions} items={buttonItems} style={style}></ButtonGroup>) as VNode
         const children = [LayoutComponent]
+        const formFooter = []
 
-        if (defaultSlots) {
-            const defaultSlotsWithWrapper = (<div class={bem('slots-box')}>{defaultSlots()}</div>)
-            children.push(defaultSlotsWithWrapper)
+        defaultSlots && formFooter.push(<div class={bem('slots')}>{defaultSlots()}</div>)
+        actionsShow && formFooter.push(FormButtonsComponent)
 
-        }
-
-        actionsShow && children.push(FormButtonsComponent)
+        if (formFooter.length) children.push(<div class={bem('footer')}>{formFooter}</div>)
 
         const slots = {
-            default: () => children,
+            default: () => children ,
         }
 
         return <Form {...FORM_DEFAULT_PROPS} {...attrs} class={bem()} model={model} ref="form" v-slots={slots}></Form>

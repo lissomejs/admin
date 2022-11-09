@@ -4,7 +4,7 @@
 
 :::demo 按钮示例，有`href`属性时，用el-link包裹
 ```html
-<l-button type="primary">按钮</l-button>
+<l-button type="primary" icon="plus">按钮</l-button>
 <l-button href="mailto: haozhenjia@guazi.com">发邮件</l-button>
 <l-button type="warning" href="tel:15210665018">打电话</l-button>
 <l-button type="danger" confirm-title="确认删除？" confirmable @confirm="console.log(123)">删除</l-button>

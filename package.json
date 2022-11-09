@@ -1,6 +1,6 @@
 {
     "name": "@lissome/admin",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Admin components base on Element Plus",
     "engines": {
         "node": ">=12.2.0"
@@ -21,8 +21,8 @@
         "@types/prismjs": "^1.16.5",
         "@typescript-eslint/eslint-plugin": "^4.15.2",
         "@typescript-eslint/parser": "^4.15.2",
-        "@vitejs/plugin-vue": "^2.0.1",
-        "@vitejs/plugin-vue-jsx": "^1.3.2",
+        "@vitejs/plugin-vue": "^3.2.0",
+        "@vitejs/plugin-vue-jsx": "^1.3.10",
         "@vue/compiler-sfc": "^3.2.40",
         "axios": "^0.27.2",
         "clipboard-copy": "^4.0.1",
@@ -38,9 +38,9 @@
         "plop": "^2.7.4",
         "sass": "^1.32.8",
         "typescript": "^4.7.3",
-        "vite": "^2.7.3",
+        "vite": "^3.2.3",
         "vite-plugin-dts": "^1.6.4",
-        "vite-plugin-md": "^0.6.0",
+        "vite-plugin-vue-markdown": "^0.22.1",
         "vue": "^3.2.40",
         "vue-router": "4.0.11"
     },
@@ -53,6 +53,7 @@
         "vue": "^3.2.40"
     },
     "dependencies": {
+        "@element-plus/icons-vue": "^2.0.10",
         "@lissome/util": "^1.0.4",
         "element-plus": "^2.2.17",
         "prismjs": "^1.23.0",

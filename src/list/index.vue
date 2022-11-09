@@ -8,7 +8,11 @@
             :items="items"
             @update-item-value="updateItemValue"
             @submit="onSubmit"
-        />
+        >
+            <template v-if="actions?.length">
+                <button-group :items="actions" />
+            </template>
+        </search-form>
         <data-table
             :class="bem('table')"
             :columns="columns"
@@ -20,10 +24,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive, computed, ref, Ref } from 'vue'
+import { defineComponent, PropType, reactive, computed, ref } from 'vue'
 import { createNamespace } from '../util'
 import SearchForm, { type FormItem, type FormItems } from '../form'
 import DataTable, { type ColumnSchema, type Columns, Pagination } from '../table'
+import ButtonGroup from '../button-group'
 import { Data } from '../../types'
 
 const [name, bem] = createNamespace('List')
@@ -60,6 +65,7 @@ export default defineComponent({
     components: {
         SearchForm,
         DataTable,
+        ButtonGroup,
     },
     props: {
         fields: {
@@ -69,6 +75,10 @@ export default defineComponent({
         handleSubmit: {
             type: Function as PropType<HandleSubmit>,
             required: true,
+        },
+        actions: {
+            type: Array as PropType<ButtonItems>,
+            default: () => [],
         },
     },
     setup(props){
@@ -97,7 +107,7 @@ export default defineComponent({
 
             const { handleSubmit } = props
 
-            const { list, ...nextPagination } = await handleSubmit({ ...model, ...pagination }) || {}
+            const { list, ...nextPagination } = handleSubmit && (await handleSubmit({ ...model, ...pagination })) || {}
 
             data.value = list
 

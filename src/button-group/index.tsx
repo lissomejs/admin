@@ -1,4 +1,4 @@
-import { defineComponent, Component, PropType, h, computed } from 'vue'
+import { defineComponent, Component, PropType, computed } from 'vue'
 import { ElButtonGroup, ElFormItem } from 'element-plus'
 import Button, { ButtonProps } from '../button'
 import { createNamespace, getComponent, isFalse } from '../util'
@@ -52,13 +52,10 @@ export default defineComponent({
     },
     render() {
         const { showItems, Wrapper } = this
-        const children = showItems.map((item: any) => h(Button, item, {
-            default: () => item.label,
-        }))
 
-        return h(Wrapper, {}, {
-            default: () => children,
-        })
+        const children = showItems.map((item: any) => <Button {...item}>{item.label}</Button>)
+
+        return (<Wrapper>{children}</Wrapper>)
     },
 })
 

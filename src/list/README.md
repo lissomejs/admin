@@ -2,11 +2,15 @@
 
 :::demo 示例
 ```html
-<l-list :fields="fields"></l-list>
+<l-list :fields="fields" :actions="actions"></l-list>
 <script>
   export default {
     data() {
       return {
+        actions: [{
+            key: 'name',
+            label: '姓名',
+        }],
         fields: [{
             key: 'name',
             label: '姓名',
@@ -54,6 +58,7 @@
             label: '日期',
             type: 'date'
         }, {
+            mode: 'data',
             key: 'desc',
             label: '描述',
             type: 'textArea',
