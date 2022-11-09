@@ -25,11 +25,11 @@
 
 <script lang="ts">
 import { defineComponent, PropType, reactive, computed, ref } from 'vue'
-import { createNamespace } from '../util'
+import { ApiTypes, createNamespace } from '../util'
 import SearchForm, { type FormItem, type FormItems } from '../form'
 import DataTable, { type ColumnSchema, type Columns, Pagination } from '../table'
-import ButtonGroup from '../button-group'
-import { Data } from '../../types'
+import ButtonGroup, { type ButtonItems } from '../button-group'
+import { Data } from '@types'
 
 const [name, bem] = createNamespace('List')
 
@@ -59,6 +59,7 @@ const DEFAULT_PAGINATION: Pagination = {
 }
 
 export type HandleSubmit = (model: Data) => Promise<ListData>
+export type Apis = Record<ApiTypes | string, HandleSubmit>
 
 export default defineComponent({
     name,
@@ -72,8 +73,9 @@ export default defineComponent({
             type: Array as PropType<Fields>,
             required: true,
         },
-        handleSubmit: {
-            type: Function as PropType<HandleSubmit>,
+        // 接口列表
+        apis: {
+            type: Object as PropType<Apis>,
             required: true,
         },
         actions: {
@@ -105,9 +107,9 @@ export default defineComponent({
 
             !isUpdateCurrentPage && Object.assign(pagination, DEFAULT_PAGINATION)
 
-            const { handleSubmit } = props
+            const { apis } = props
 
-            const { list, ...nextPagination } = handleSubmit && (await handleSubmit({ ...model, ...pagination })) || {}
+            const { list, ...nextPagination } = apis && apis.list && (await apis.list({ ...model, ...pagination })) || {}
 
             data.value = list
 

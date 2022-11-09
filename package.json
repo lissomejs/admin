@@ -1,6 +1,6 @@
 {
     "name": "@lissome/admin",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Admin components base on Element Plus",
     "engines": {
         "node": ">=12.2.0"
@@ -60,8 +60,8 @@
         "vue-prism-editor": "^2.0.0-alpha.2"
     },
     "main": "lib/admin.umd.js",
-    "module": "lib/admin.es.js",
-    "jsnext:main": "lib/admin.es.js",
+    "module": "lib/admin.mjs",
+    "jsnext:main": "lib/admin.mjs",
     "license": "MIT",
     "types": "lib/types/index.d.ts",
     "files": [

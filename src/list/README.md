@@ -83,4 +83,6 @@
 
 | 属性 | 类型 | 说明 |
 | -- | -- | -- |
-|`title` | `String`| 系统名称 |
+|`fields` | `Array`| 字段列表 |
+|`actions` | `Array`| 操作列表 |
+|`apis` | `Object`| 接口集合 |

@@ -23,6 +23,12 @@ export default defineConfig({
         jsx(),
         (markdownPlugins as (options: any) => Plugin)({}),
     ],
+    resolve: {
+        alias: {
+            '@examples': 'examples',
+            '@types': 'types',
+        },
+    },
     build: {
         outDir: 'lib',
         lib: {
