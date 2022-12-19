@@ -1,20 +1,20 @@
 <template>
     <el-menu :default-active="activeIndex" :default-openeds="openedSubMenus" router>
-        <template v-for="menu in routes" :key="menu.name">
-            <el-menu-item v-if="!menu.children || !menu.children.length" :index="menu.name" :route="menu">
-                <span>{{ menu.meta?.title }}</span>
+        <template v-for="menu in menus" :key="menu.key">
+            <el-menu-item v-if="!menu.subs || !menu.subs.length" :index="menu.key" :route="menu.route">
+                <span>{{ menu.label }}</span>
             </el-menu-item>
-            <el-sub-menu v-else :index="menu.name">
+            <el-sub-menu v-else :index="menu.key">
                 <template #title>
-                    <span>{{ menu.meta?.title }}</span>
+                    <span>{{ menu.label }}</span>
                 </template>
                 <el-menu-item
-                    v-for="sub in menu.children"
-                    :key="sub.name"
-                    :index="sub.name"
-                    :route="sub"
+                    v-for="sub in menu.subs"
+                    :key="sub.key"
+                    :index="sub.key"
+                    :route="sub.route"
                 >
-                    <span>{{ sub.meta?.title }}</span>
+                    <span>{{ sub.label }}</span>
                 </el-menu-item>
             </el-sub-menu>
         </template>
@@ -47,10 +47,20 @@ type MenuItem = {
     index?: boolean // 是否为首页
     label: string // 菜单文案
     key: string // 路由路径及name
+    route: RouteRecord
     subs?: Menus
 }
 
 type Menus = Array<MenuItem>
+
+const generateMenuFormRoutes = (routes: RouteRecordList): Menus => routes
+    ?.filter( route => route.meta?.isMenu !== false )
+    ?.map( route => ({
+        label: route.meta?.title || '未命名菜单',
+        key: route.name,
+        route,
+        subs: route.children?.length ? generateMenuFormRoutes(route.children) : undefined,
+    }))
 
 export default defineComponent({
     name,
@@ -64,10 +74,11 @@ export default defineComponent({
         },
     },
     setup(props){
+        const menus = computed(() => generateMenuFormRoutes(props.routes))
         const openedSubMenus: Array<string> = []
         const activeIndex = computed( () =>  props.currentRoute?.name)
 
-        return { activeIndex, openedSubMenus }
+        return { activeIndex, openedSubMenus, menus }
     },
 })
 </script>
