@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': ^12.0.1
   '@commitlint/config-conventional': ^12.0.1
   '@element-plus/icons-vue': ^2.0.10
-  '@lissome/util': ^1.0.4
+  '@lissome/util': ^1.0.5
   '@types/node': ^18.8.0
   '@types/prismjs': ^1.16.5
   '@typescript-eslint/eslint-plugin': ^4.15.2
@@ -37,7 +37,7 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.0.10_vue@3.2.40
-  '@lissome/util': 1.0.4
+  '@lissome/util': 1.0.5
   element-plus: 2.2.17_vue@3.2.40
   prismjs: 1.29.0
   vue-prism-editor: 2.0.0-alpha.2_vue@3.2.40
@@ -638,8 +638,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@lissome/util/1.0.4:
-    resolution: {integrity: sha512-st3RqpA+RRnchbYNDAjgZ/ZrA/dwNm9xXh/8V4w9sh+MYUQh/QCNqPZxl9caHYmsSQOaVCdAFiJ8uJ4MAGmToQ==}
+  /@lissome/util/1.0.5:
+    resolution: {integrity: sha512-mteNU5OaRDoaiWGJIDyOWGCNsAeJw+Iz2G75girIyDvgA/ogu0uD8b/0dsYF34Oqp1LwHcezqVVsFI+Zxf4XZg==}
     engines: {node: '>=12.2.0'}
     dev: false
 

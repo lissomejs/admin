@@ -1,4 +1,4 @@
-import { isFunction, isArray, isFalse } from '@lissome/util'
+import { isFunction, isArray, isFalse, isTrue, isString } from '@lissome/util'
 import { Component, resolveComponent } from 'vue'
 
 /**
@@ -78,6 +78,8 @@ export {
     isArray,
     isFunction,
     isFalse,
+    isTrue,
+    isString,
 }
 
 export * from './options'

@@ -1,6 +1,6 @@
 import { defineComponent, PropType, h, ConcreteComponent, computed, ComputedRef, getCurrentInstance, VNode, Component } from 'vue'
 import { ElForm, ElFormItem } from 'element-plus'
-import { createNamespace, getComponent } from '../util'
+import { createNamespace, getComponent, isFalse, isTrue, isString } from '../util'
 import ButtonGroup, { ButtonGroupType, ButtonItems } from '../button-group'
 import { getPlaceholder, type FormItems, type FormItem as FormItemType, ValidateRule, ComponentProps, getRequiredMessage, InputMap, ComponentOption } from './items'
 import Layout from '../layout'
@@ -21,6 +21,9 @@ export type FormProps = {
     actionDirection: ActionDirection
     columnsCount: number
 }
+
+type ActionTypes = 'submit' | 'reset'
+type FormActions = boolean | ActionTypes | ActionTypes[];
 
 const FORM_DEFAULT_PROPS = {
     labelPosition: 'left',
@@ -49,8 +52,8 @@ export default defineComponent({
             default: '重置',
         },
         // 是否显示提交重置按钮
-        actionsShow: {
-            type: Boolean,
+        actions: {
+            type: [Boolean, String, Array] as PropType<FormActions>,
             default: true,
         },
         actionDirection: {
@@ -99,26 +102,41 @@ export default defineComponent({
                 }
             })
         })
-        const onSubmit = () => validate().then(() => emit('submit', props.model)).catch( reason => {
-            console.log(reason)
-        })
+        const onSubmit = () => validate().then(() => emit('submit', props.model)).catch(reason => console.warn(reason))
         const onReset = () => {
             formComponent.value && formComponent.value.resetFields()
 
             emit('reset')
         }
-        const buttonItems: ComputedRef<ButtonItems> = computed((): ButtonItems => ([{
-            key: 'submit',
-            type: 'primary',
-            label: props.submitTitle,
-            onClick: onSubmit,
-        }, {
-            key: 'reset',
-            label: props.clearTitle,
-            onClick: onReset,
-        }]))
-        const renderCell = ({ type = 'input', key, label, placeholder, required, reg, items, ...otherProps }: FormItemType) => {
+        const buttonItems: ComputedRef<ButtonItems> = computed(() => {
+            let { actions } = props
+
+            if(isFalse(actions) ) return []
+
+            const defaultButtonItems: ButtonItems = [{
+                key: 'submit',
+                type: 'primary',
+                label: props.submitTitle,
+                onClick: onSubmit,
+            }, {
+                key: 'reset',
+                label: props.clearTitle,
+                onClick: onReset,
+            }]
+
+            if (isTrue(actions)) return defaultButtonItems
+
+            if (isString(actions)) actions = [actions]
+
+            return defaultButtonItems.filter( button => (actions as Array<ActionTypes>).includes(button.key))
+        })
+        const renderCell = ({ type = 'input', key, label, placeholder, required, reg, items, inputType, ...otherProps }: FormItemType) => {
             const { component: InputComponent, props: propsInComponentOption = {} } = getComponentOption(type)
+
+            if(inputType) Object.assign(otherProps, {
+                type: inputType,
+            })
+
             const InputItem = h(InputComponent as ConcreteComponent<ComponentProps>, {
                 ...propsInComponentOption,
                 ...otherProps,
@@ -156,7 +174,7 @@ export default defineComponent({
     },
     render() {
         const Form = getComponent<typeof ElForm>('Form')
-        const { items, model, buttonItems, actionsShow, renderCell, actionDirection, columnsCount, rowColCounts, $slots: {
+        const { items, model, buttonItems, renderCell, actionDirection, columnsCount, rowColCounts, $slots: {
             default: defaultSlots,
         }, $attrs: attrs } = this
         const LayoutComponent = (<Layout items={items} renderCell={renderCell} columnsCount={columnsCount} rowColCounts={rowColCounts}></Layout>)
@@ -166,7 +184,7 @@ export default defineComponent({
         const formFooter = []
 
         defaultSlots && formFooter.push(<div class={bem('slots')}>{defaultSlots()}</div>)
-        actionsShow && formFooter.push(FormButtonsComponent)
+        buttonItems.length && formFooter.push(FormButtonsComponent)
 
         if (formFooter.length) children.push(<div class={bem('footer')}>{formFooter}</div>)
 

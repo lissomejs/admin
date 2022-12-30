@@ -47,6 +47,7 @@ export type FormItem = {
     type: InputTypes
     key: string
     label: string
+    inputType?: string // input类型
     value?: string
     required?: boolean
     reg: ValidateRule
@@ -69,4 +70,4 @@ export type FormItemComponentProps = {
 }
 
 export const getPlaceholder = (label: string, type: InputTypes) => type === 'select' ? `请选择${label}` : `请输入${label}`
-export const getRequiredMessage = (label: string) => `${label}为必填项`
+export const getRequiredMessage = (label: string) => `${label || '该项'}为必填项`

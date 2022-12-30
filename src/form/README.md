@@ -13,7 +13,7 @@
 <div style="margin-bottom: 20px;">
 按钮位置：<l-select v-model="actionDirection" :items="actionDirections"></l-select>
 </div>
-<l-form ref="form" :model="form" :actions-show="actionsShow" :items="items" :action-direction="actionDirection" :columns-count="+columnsCount" @updateItemValue="updateItemValue" @submit="onSubmit">
+<l-form ref="form" :model="form" :actions="actionsShow" :items="items" :action-direction="actionDirection" :columns-count="+columnsCount" @updateItemValue="updateItemValue" @submit="onSubmit">
     <div>测试一下</div>
 </l-form>
 <script>
@@ -98,9 +98,9 @@
             console.log('updateItemValue', key, value)
             this.form[key] = value
         },
-      onSubmit(model) {
-        console.log('submit!', model);
-      }
+        onSubmit(model) {
+            console.log('submit!', model);
+        }
     }
   }
 </script>

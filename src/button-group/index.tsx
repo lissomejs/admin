@@ -21,6 +21,7 @@ export type WrapperComponent = Component | keyof HTMLElementTagNameMap
 export type ButtonWrapper = Record<ButtonGroupType, WrapperComponent >
 
 const [name] = createNamespace('ButtonGroup')
+const [, bem] = createNamespace('Button')
 
 export default defineComponent({
     name,
@@ -53,7 +54,7 @@ export default defineComponent({
     render() {
         const { showItems, Wrapper } = this
 
-        const children = showItems.map((item: any) => <Button {...item}>{item.label}</Button>)
+        const children = showItems.map((item: any) => <Button class={bem(item.key)} {...item}>{item.label}</Button>)
 
         return (<Wrapper>{children}</Wrapper>)
     },
