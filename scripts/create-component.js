@@ -11,15 +11,6 @@ const DEPENDENCY_LIST = [{
     getStylePath(componentName){
         return `${this.name}/lib/theme-chalk/${this.prefix}-${componentName.toLowerCase()}.css`;
     },
-}, {
-    name: 'car-design',
-    prefix: 'ca',
-    getComponentPath(componentName){
-        return `${this.name}/es/${this.prefix}-${componentName.toLowerCase()}/index`;
-    },
-    getStylePath(componentName){
-        return `${this.name}/lib/theme-chalk/${this.prefix}-${componentName.toLowerCase()}.css`;
-    },
 }, { // 通用，不依赖其他库
     name: 'null',
     prefix: 'null',
@@ -132,5 +123,4 @@ module.exports = {
     type,
     generator,
     helpers,
-}
-;
+};

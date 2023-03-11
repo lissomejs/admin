@@ -19,8 +19,6 @@ const needLogin = (code: number): boolean => NEED_LOGIN_CODES.includes(code)
 
 const isSuccess = (code: number): boolean => SUCCESS_CODES.includes(code)
 
-
-axios.interceptors.request.use(request => request)
 axios.interceptors.response.use(response => {
     const { data: responseData } = response
     const { code, data = {} } = (responseData) || {}
