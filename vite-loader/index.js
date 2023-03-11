@@ -22,12 +22,12 @@ const createMarkdown = () => {
 }
 const compileStringToComponent = (source) => {
     let componentsGroup = ''
-    const removeHtmlSource = source.replace(/<!--vue-seed-demo\:([\s\S]*?)\:vue-seed-demo-->/g, function ($0, $1) {
+    const removeHtmlSource = source.replace(/<!--vue-lissome-demo\:([\s\S]*?)\:vue-lissome-demo-->/g, function ($0, $1) {
         const template = stripTemplate($1)
         const script = stripScript($1)
         let replaceResult = ''
         if (template) {
-            const componentsKey = 'vue-seed-component-' + Date.now() + '' + Math.round(Math.random() * 1000)
+            const componentsKey = 'vue-lissome-component-' + Date.now() + '' + Math.round(Math.random() * 1000)
             componentsGroup += `'${componentsKey}': ${genInlineComponentText(template, script)},`
             replaceResult = `<${componentsKey}></${componentsKey}>`
         }

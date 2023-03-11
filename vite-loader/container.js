@@ -11,7 +11,7 @@ const createCustomMarkContainer = (md) => {
                 const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
                 return `<demo-block>
                         ${description ? `${md.render(description)}` : ''}
-                        <template #source><!--vue-seed-demo: ${content}:vue-seed-demo--></template>
+                        <template #source><!--vue-lissome-demo: ${content}:vue-lissome-demo--></template>
                 `
             }
             return '</demo-block>'
