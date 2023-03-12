@@ -86,6 +86,14 @@
             key: 'date',
             label: '日期',
             type: 'date'
+        },{
+            key: 'range',
+            label: '日期区间',
+            type: 'dateRange'
+        }, {
+            key: 'month',
+            label: '月份',
+            type: 'month'
         }, {
             key: 'desc',
             label: '描述',

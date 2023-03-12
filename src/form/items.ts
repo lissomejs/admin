@@ -14,7 +14,7 @@ export type InputMap = {
         props: ComponentProps
     }
     date: Component
-    rangeDate?: {
+    dateRange?: {
         component: Component
         props: ComponentProps
     }

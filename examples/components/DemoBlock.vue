@@ -33,7 +33,7 @@
                     v-show="hovering || isExpanded"
                     ref="copyButton"
                     size="small"
-                    type="text"
+                    link
                     class="control-button copy-button"
                     @click.stop="copy"
                 >

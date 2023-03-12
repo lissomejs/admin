@@ -5,7 +5,7 @@
 :::demo 通过`v-model`控制弹窗的打开、关闭。
 
 ```html
-<el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+<el-button @click="dialogVisible = true">点击打开 Dialog</el-button>
 
 <l-dialog
   title="提示"

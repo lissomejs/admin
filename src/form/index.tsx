@@ -75,6 +75,20 @@ export default defineComponent({
             checkbox: CheckboxGroup,
             radio: RadioGroup,
             date: getComponent('DatePicker'),
+            dateRange: {
+                component: getComponent('DatePicker'),
+                props: {
+                    type: 'daterange',
+                    startPlaceholder: '请输入开始日期',
+                    endPlaceholder: '请输入结束日期',
+                },
+            },
+            month: {
+                component: getComponent('DatePicker'),
+                props: {
+                    type: 'month',
+                },
+            },
             textArea: {
                 component: getComponent('Input'),
                 props: {

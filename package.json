@@ -1,6 +1,6 @@
 {
     "name": "@lissome/admin",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "Admin components base on Element Plus",
     "keywords": ["admin"],
     "engines": {
