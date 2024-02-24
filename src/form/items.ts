@@ -22,6 +22,7 @@ export type InputMap = {
         component: Component
         props: ComponentProps
     }
+    upload?: Component
 }
 
 export type ComponentOption = {

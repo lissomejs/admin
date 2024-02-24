@@ -95,9 +95,12 @@ export default defineComponent({
                     type: 'textarea',
                 },
             },
+            upload: getComponent('Upload'),
         }
         const getComponentOption = (type: keyof InputMap): ComponentOption => {
             const option = INPUT_MAP[type] as ComponentOption
+
+            if (!option && getComponent(type)) return { component: getComponent(type) as Component }
 
             return !!(option?.component) ? option : { component: option as Component }
         }
